@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  include PdfHelpers
+
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
@@ -10,14 +12,17 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    # respond_to do |f|
-    #   f.html do
-    #     @is_pdf = false
-    #   end
-    #   f.pdf do
-    #     @is_pdf = true
-    #   end
-    # end
+    template_path = 'articles/show.html.erb'
+    respond_to do |f|
+      f.html do
+        @is_pdf = false
+        render template_path
+      end
+      f.pdf do
+        @is_pdf = true
+        render_pdf_from_template "#{@article.title}-#{Time.zone.now.to_date.to_s}", template_path
+      end
+    end
   end
 
   # GET /articles/new

@@ -8,8 +8,11 @@
   </p>
 </div>
 
-<% if !@is_pdf %>
-  <%= link_to 'Edit', edit_article_path(@article) %> |
-  <%= link_to 'Back', articles_path %>
-<% end %>
+<div class="ArticleActions">
+  <% if !@is_pdf %>
+    <%= link_to 'Edit', edit_article_path(@article) %> |
+    <%= link_to 'Back', articles_path %> |
+    <%= link_to 'PDF', article_path(@article, format: :pdf), target: '_blank' %>
+  <% end %>
+</div>
 
