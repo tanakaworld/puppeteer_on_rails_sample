@@ -1,19 +1,15 @@
-<p id="notice"><%= notice %></p>
+<div class="ArticleWrap">
+  <h1 class="ArticleTitle"><%= @article.title %></h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+  <%= image_tag @article.cover_image, class: 'ArticleCoverImage' %>
 
-<p>
-  <strong>Content:</strong>
-  <%= @article.content %>
-</p>
+  <p class="ArticleContent">
+    <%= @article.content %>
+  </p>
+</div>
 
-<p>
-  <strong>Cover:</strong>
-  <%= image_tag @article.cover_image, width: 50, height: 50 %>
-</p>
+<% if !@is_pdf %>
+  <%= link_to 'Edit', edit_article_path(@article) %> |
+  <%= link_to 'Back', articles_path %>
+<% end %>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>

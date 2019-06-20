@@ -10,6 +10,14 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    # respond_to do |f|
+    #   f.html do
+    #     @is_pdf = false
+    #   end
+    #   f.pdf do
+    #     @is_pdf = true
+    #   end
+    # end
   end
 
   # GET /articles/new
